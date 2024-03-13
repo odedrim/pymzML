@@ -112,7 +112,7 @@ class StandardMzml(object):
             start, end = self._read_to_spec_end(seeker)
 
             self.file_handler.seek(start, 0)
-            data = self.file_handler.read(end)
+            data = self.file_handler.read(end).strip()
             if data.startswith("<spectrum"):
                 spectrum = spec.Spectrum(XML(data), measured_precision=5e-6)
             elif data.startswith("<chromatogram"):
